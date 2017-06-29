@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Editing - <%= @post.name %></title>
+  </head>
+  <body>
+    <form method="patch" action= <%= "/posts/#{@post.id}"%> >
+      <label for="">Name: </label><input type="text" name="post[name]" value="">
+      <label for="">Conent: </label><input type="text" name="post[content]" value="">
+      <input type="submit" name="submit">
+    </form>
+  </body>
+</html>
