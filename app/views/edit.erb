@@ -5,10 +5,13 @@
     <title>Editing - <%= @post.name %></title>
   </head>
   <body>
-    <form method="patch" action= <%= "/posts/#{@post.id}"%> >
-      <label for="">Name: </label><input type="text" name="post[name]" value="">
-      <label for="">Conent: </label><input type="text" name="post[content]" value="">
-      <input type="submit" name="submit">
+    <h1><%= @post.name %></h1>
+    <p><%= @post.content %></p>
+    <form method="post" action= <%="/posts/#{@post.id}"%> >
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      <label for="">Name: </label><input type="text" name="post[name]" id="name">
+      <label for="">Content: </label><input type="text" name="post[content]" id="content">
+      <input type="submit" name="submit" id="submit">
     </form>
   </body>
 </html>

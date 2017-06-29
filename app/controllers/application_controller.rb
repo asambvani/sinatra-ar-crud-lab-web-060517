@@ -16,8 +16,16 @@ class ApplicationController < Sinatra::Base
     erb :new
   end
 
+  patch '/posts/:id' do
+    # binding.pry
+    @post = Post.find(params[:id])
+    @post.update(params[:post])
+    redirect "/posts/#{params[:id]}"
+  end
+
   get '/posts/:id' do
-    @post = Post.find(:id)
+    # binding.pry
+    @post = Post.find(params[:id])
     erb :show
   end
 
@@ -27,13 +35,16 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/posts/:id/edit' do
-    @post = Post.find(:id)
+    @post = Post.find(params[:id])
     erb :edit
   end
 
-  patch '/posts/:id' do
-    @post = Post.find(:id)
-    @post.update(params[:post])
+  delete '/posts/:id/delete' do
+    @post = Post.find(params[:id])
+    @deleted_post = @post.name
+    Post.destroy(params[:id])
+    erb :delete
   end
+
 
 end
